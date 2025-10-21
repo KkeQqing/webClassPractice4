@@ -6,19 +6,19 @@ let highlightedElement = null; // 当前高亮的元素
 
 // 修复样式注入函数（移除递归调用，正确注入高亮样式）
 function injectHighlightStyle() {
-  if (document.getElementById('areaSelectorHighlightStyle')) return; // 避免重复注入
+  if (document.getElementById('areaSelectorHighlightStyle')) return;
 
   const style = document.createElement('style');
   style.id = 'areaSelectorHighlightStyle';
   style.textContent = `
     .area-selector-highlight {
-      outline: 2px dashed #0078d7 !important; /* 蓝色虚线边框 */
+      outline: 2px solid red !important; /* 改为红色实线边框 */
       outline-offset: -2px;
-      background-color: rgba(0, 120, 215, 0.1) !important; /* 轻微蓝色背景 */
-      transition: all 0.1s ease; /* 平滑过渡效果 */
-      z-index: 99998 !important; /* 确保在内容上方但低于信息面板 */
+      background-color: rgba(255, 0, 0, 0.05) !important; /* 可选：淡红色背景，或设为 transparent */
+      transition: all 0.1s ease;
+      z-index: 99998 !important;
     }
-    /* 排除信息面板自身被高亮 */
+    /* 确保信息面板自身不被高亮 */
     #areaSelectorPanel, #areaSelectorPanel * {
       outline: none !important;
       background-color: transparent !important;
