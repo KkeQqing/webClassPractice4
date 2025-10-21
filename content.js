@@ -1,4 +1,3 @@
-// content.js
 let isAreaSelectorActive = false;
 
 // 高亮元素
@@ -20,7 +19,6 @@ function highlightElement(element) {
     background-color: rgba(0, 120, 204, 0.1);
   `;
 
-  // 获取元素位置
   const rect = element.getBoundingClientRect();
   highlight.style.left = `${rect.left}px`;
   highlight.style.top = `${rect.top}px`;
@@ -29,7 +27,7 @@ function highlightElement(element) {
 
   document.body.appendChild(highlight);
 
-  // 显示属性框
+  // 显示信息框
   showInfoBox(element);
 }
 
@@ -65,7 +63,6 @@ function showInfoBox(element) {
 
   document.body.appendChild(infoBox);
 
-  // 定位到元素上方
   const rect = element.getBoundingClientRect();
   infoBox.style.left = `${rect.left}px`;
   infoBox.style.top = `${rect.bottom + 10}px`;
@@ -99,6 +96,8 @@ function hideInfoBox() {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "showAreaSelector") {
     startAreaSelector();
+  } else if (request.action === "hideAreaSelector") {
+    stopAreaSelector();
   }
 });
 
