@@ -4,105 +4,14 @@
   <meta charset="UTF-8" />
   <title>区域选择器</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .container {
-      width: 200px;
-      padding: 10px;
-    }
-
-    .section {
-      margin-bottom: 15px;
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-      border: 1px solid #ccc;
-      background: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn:hover {
-      background: #f0f0f0;
-    }
-
-    .info-box {
-      margin-top: 10px;
-      padding: 10px;
-      background: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 12px;
-    }
-
-    .help-content {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-    <button class="btn" onclick="showAreaSelector()">区域选择</button>
-    <button class="btn" onclick="showHelp()">帮助</button>
+<body style="width: 160px; min-width: 160px; padding: 8px; margin: 0;">
+  <button class="menu-btn">打开网站</button>
+  <button class="menu-btn" id="areaSelectBtn">区域选择</button> <!-- 增加id用于绑定事件 -->
+  <button class="menu-btn">设置栏目</button>
+  <button id="helpBtn">帮助</button> <!-- 增加id用于绑定事件 -->
 
-    <!-- 区域选择界面 -->
-    <div id="areaSelector" class="section active">
-      <p>点击“开始”以启用区域选择。</p>
-      <button class="btn" onclick="startAreaSelector()">开始</button>
-      <button class="btn" onclick="stopAreaSelector()">停止</button>
-      <div class="info-box">
-        <p><strong>提示：</strong>鼠标悬停在 <code>&lt;div&gt;</code> 或 <code>&lt;table&gt;</code> 上将高亮显示其属性。</p>
-      </div>
-    </div>
-
-    <!-- 帮助界面 -->
-    <div id="helpContent" class="section help-content">
-      <h3>使用说明</h3>
-      <p>本插件支持右键菜单操作：</p>
-      <ul>
-        <li><strong>区域选择</strong>：点击后，鼠标悬停在 <code>&lt;div&gt;</code> 或 <code>&lt;table&gt;</code> 上，会高亮显示并展示属性。</li>
-        <li><strong>帮助</strong>：查看详细使用方法。</li>
-      </ul>
-      <p><a href="javascript:closeHelp()">关闭</a></p>
-    </div>
-  </div>
-
-  <script>
-    function showAreaSelector() {
-      document.getElementById('areaSelector').classList.add('active');
-      document.getElementById('helpContent').classList.remove('active');
-    }
-
-    function showHelp() {
-      document.getElementById('helpContent').classList.add('active');
-      document.getElementById('areaSelector').classList.remove('active');
-    }
-
-    function startAreaSelector() {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "showAreaSelector" });
-      });
-      alert("区域选择已启用！");
-    }
-
-    function stopAreaSelector() {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "hideAreaSelector" });
-      });
-      alert("区域选择已停止！");
-    }
-
-    function closeHelp() {
-      showAreaSelector();
-    }
-  </script>
+  <!-- 引入外部JS文件 -->
+  <script src="popup.js"></script>
 </body>
 </html>

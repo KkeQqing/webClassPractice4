@@ -1,3 +1,4 @@
+<!-- help.html -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -17,6 +18,9 @@
   <div class="tip">
     <strong>帮助</strong>：查看详细使用方法。
   </div>
-  <p><a href="javascript:window.close()">关闭</a></p>
+  <p><a id="closeHelp">关闭</a></p> <!-- 移除javascript:伪协议，改为id绑定事件 -->
+
+  <!-- 引入外部JS处理关闭事件 -->
+  <script src="help.js"></script>
 </body>
 </html>
