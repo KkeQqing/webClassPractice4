@@ -3,7 +3,7 @@
   "name": "区域选择器",
   "version": "1.0",
   "description": "右键选择区域，查看 div/table 属性。",
-    "permissions": ["contextMenus", "activeTab"],
+  "permissions": ["contextMenus", "activeTab"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "区域选择"
@@ -21,5 +21,11 @@
   "icons": {
     "16": "icon.png",
     "48": "icon.png"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["help.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
