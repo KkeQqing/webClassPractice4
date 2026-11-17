@@ -1,0 +1,16 @@
+# ignore rules
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.vs/
+*.suo
+*.user
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.tmp
+node_modules/
+dist/
